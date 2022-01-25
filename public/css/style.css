@@ -1,0 +1,143 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.4;
+  /*letter-spacing: 0.03em;*/
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  line-height: 1.4;
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
+  background-color: var(--darkWhite);
+}
+
+:root {
+  --font: "Lato", sans-serif !important;
+  --black: #282C34;
+  --primary: #e52e71;
+  --secondary: #F36F6F;
+  --lightGray: rgba(0, 0, 0, .2);
+  --gray: #4D4D4D;
+  --blue: #0366d6;
+  --red: red;
+  --redTransparent: rgba(255, 0, 0, 0.1);
+  --darkWhite: #f0f0f0;
+  --border-small: 4px;
+  --border-medium: 8px;
+  --border-large: 18px;
+  --font-small: 13px;
+  --font-medium: 16px;
+  --font-large: 24px;
+  --margin-large: 18px;
+  --margin-small: 8px;
+  --shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+  --overlay: hsla(0, 0%, 45%, 0.6);
+}
+
+.center-all {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.fullscreen {
+  height: 100vh;
+  overflow: none;
+}
+
+input {
+  border: none;
+  background-color: white;
+  font-size: larger;
+  padding: 10px;
+  margin-bottom: var(--margin-small);
+}
+input:focus {
+  outline: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+form input {
+  border: none;
+  background-color: white;
+  font-size: larger;
+  padding: 10px;
+  min-width: 400px;
+}
+form input:focus {
+  outline: none;
+}
+form > * {
+  margin: var(--margin-small) 0;
+}
+
+.error {
+  border-color: var(--red);
+  border-width: 1px;
+  border-style: solid;
+  padding: var(--margin-small);
+  margin: var(--margin-small) 0;
+  background-color: var(--redTransparent);
+}
+
+button {
+  border: none;
+  background-color: var(--black);
+  color: white;
+  cursor: pointer;
+  font-size: larger;
+  padding: 10px;
+  min-width: 80px;
+  max-height: 45px;
+}
+button:focus {
+  outline: none;
+}
+button:hover {
+  filter: brightness(1.5);
+}
+button.outline {
+  background-color: transparent;
+  border-width: 1px;
+  border-color: var(--black);
+  border-style: solid;
+  color: var(--black);
+}
+button.outline:hover {
+  background-color: white;
+}
+button.transparent {
+  background-color: transparent;
+  color: var(--black);
+  font-size: larger;
+  padding: 0;
+  min-width: 0;
+  max-height: none;
+}
+button.small {
+  max-height: 45px;
+  padding: 6px 10px;
+  font-size: var(--font-medium);
+}
+
+.brand {
+  color: var(--black);
+  margin-bottom: var(--margin-large);
+}
+.brand > i {
+  margin-bottom: var(--margin-small);
+}

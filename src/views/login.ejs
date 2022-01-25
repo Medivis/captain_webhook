@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+<%- include('parts/head'); -%>
+
+    <body>
+        <div class="fullscreen center-all cover">
+            <div class="login-wrapper" style="transform: translateY(-10%); display: block">
+                <div class="center-all brand">
+                    <i class="fas fa-skull-crossbones fa-10x"></i>
+                    <h1>Captain Hook</h1>
+                </div>
+
+                <% if (messages && messages.error) { %>
+                    <div class="error">
+                        <%= messages.error %>
+                    </div>
+                    <% } %>
+
+                        <form action="/login" method="POST" class="login-form">
+                            <input placeholder="Username" type="text" id="username" name="username" required>
+                            <input placeholder="Password" type="password" id="password" name="password" required>
+                            <button class="button" type="submit">Login</button>
+                        </form>
+            </div>
+        </div>
+    </body>
+
+</html>

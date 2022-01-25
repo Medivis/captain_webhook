@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+<%- include('parts/head'); -%>
+
+    <body>
+        <nav class="titlebar">
+            <div class="icon center-all">
+                <i class="fas fa-skull-crossbones fa-2x " style="color: white;"></i>
+            </div>
+            <h1>Captain Hook</h1>
+            <form action="/logout" method="POST">
+                <button type="submit" class="button white">Logout</button>
+            </form>
+        </nav>
+        <div class="content">
+
+            <% hooks.forEach(hook=> { %>
+                <div class="hook-card">
+                    <form action="/hook/<%= hook.id %>/delete" method="POST" class="delete">
+                        <button type="submit center-all">
+                            <i class="fas fa-times fa-1x"></i>
+                        </button>
+                    </form>
+                    <form action="/hook/<%= hook.id %>/update" method="POST" spellcheck="false">
+                        <input class="title" type="text" name="name" value="<%= hook.name %>" />
+                        <p class="url">
+                            <%= baseurl %>/hook/<%= hook.id %>
+                        </p>
+                        <textarea name="cmd"><%= hook.cmd.join('\n') %></textarea>
+                        <button type="submit" class="button outline small">Save</button>
+                    </form>
+                </div>
+                <% }) %>
+
+                    <form action="/hook" method="POST" class="add-new center-all">
+                        <button type="submit" class="button transparent">
+                            <i class="fas fa-plus fa-2x"></i>
+                            <i class="fas fa-skull-crossbones fa-2x"></i>
+                        </button>
+                    </form>
+        </div>
+    </body>
+
+</html>
