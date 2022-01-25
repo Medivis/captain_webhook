@@ -12,7 +12,7 @@ async function initialize(passport) {
 	async function authenticateUser(username, password, done) {
 		if (username && username === config.USERNAME && password === config.PASSWORD)
 			return done(null, { username: config.USERNAME });
-		return done(null, false, { message: "Die Kombination aus Benutzername und Passwort ist ungültig." })
+		return done(null, false, { message: "The combination of username and password is invalid." })
 	}
 
 	passport.use(new LocalStrategy({ usernameField: 'username' }, authenticateUser));

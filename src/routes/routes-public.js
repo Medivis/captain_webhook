@@ -16,12 +16,22 @@ router.get('/info', function (req, res) {
 })
 
 /**
+ * WebHook Lock Set to prevent double processes
+ */
+const hookLock = new Set([]);
+
+/**
  * WebHook Api, for triggering webhooks
  */
 router.post('/hook/:id', async function (req, res) {
+  const id = req.params.id
   const hooks = await HookApi.getAllHooks()
-  const hook = hooks[req.params.id]
-  if(!hook) return res.sendStatus(404)
+  const hook = hooks[id]
+
+  if (!hook) return res.sendStatus(404)
+  if (hookLock.has(id)) return res.sendStatus(409)
+  hookLock.add(id)
+  
   try {
     var spawn = require('child_process').spawn;
 
@@ -35,9 +45,9 @@ router.post('/hook/:id', async function (req, res) {
       console.log(data.toString());
     });
     child.on('exit', function (exitCode) {
-      res.sendStatus(200)
+      hookLock.delete(id)
     });
-
+    res.sendStatus(200)
   } catch (e) {
     res.sendStatus(500)
   }

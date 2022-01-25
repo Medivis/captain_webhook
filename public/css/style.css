@@ -18,8 +18,8 @@ body {
   font-family: var(--font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-y: auto;
-  background-color: var(--darkWhite);
+  overflow-y: scroll;
+  background-color: white;
 }
 
 :root {
@@ -27,12 +27,12 @@ body {
   --black: #282C34;
   --primary: #e52e71;
   --secondary: #F36F6F;
-  --lightGray: rgba(0, 0, 0, .2);
+  --lightGray: #d0d7de;
   --gray: #4D4D4D;
   --blue: #0366d6;
   --red: red;
   --redTransparent: rgba(255, 0, 0, 0.1);
-  --darkWhite: #f0f0f0;
+  --darkWhite: #F6F8FA;
   --border-small: 4px;
   --border-medium: 8px;
   --border-large: 18px;
@@ -60,8 +60,12 @@ input {
   border: none;
   background-color: white;
   font-size: larger;
-  padding: 10px;
-  margin-bottom: var(--margin-small);
+  padding: var(--margin-small);
+  border-radius: var(--border-medium);
+  border-color: var(--lightGray);
+  border-width: 1px;
+  border-style: solid;
+  font-size: var(--font-medium);
 }
 input:focus {
   outline: none;
@@ -70,19 +74,24 @@ input:focus {
 form {
   display: flex;
   flex-direction: column;
+  gap: var(--margin-small);
 }
-form input {
-  border: none;
-  background-color: white;
-  font-size: larger;
-  padding: 10px;
-  min-width: 400px;
+
+.login-wrapper {
+  width: 320px;
 }
-form input:focus {
-  outline: none;
+
+.login-form {
+  width: 100%;
+  gap: calc(var(--margin-small)*2);
 }
-form > * {
-  margin: var(--margin-small) 0;
+
+.brand {
+  color: var(--black);
+  margin-bottom: 32px;
+}
+.brand > i {
+  margin-bottom: var(--margin-small);
 }
 
 .error {
@@ -91,36 +100,49 @@ form > * {
   border-style: solid;
   padding: var(--margin-small);
   margin: var(--margin-small) 0;
+  border-radius: var(--border-medium);
   background-color: var(--redTransparent);
 }
 
-button {
+.button {
   border: none;
   background-color: var(--black);
   color: white;
   cursor: pointer;
   font-size: larger;
-  padding: 10px;
+  padding: var(--margin-small);
+  border-radius: var(--border-medium);
+  font-size: var(--font-medium);
   min-width: 80px;
   max-height: 45px;
 }
-button:focus {
+.button:focus {
   outline: none;
 }
-button:hover {
+.button:hover {
   filter: brightness(1.5);
 }
-button.outline {
+.button.outline {
   background-color: transparent;
   border-width: 1px;
   border-color: var(--black);
   border-style: solid;
   color: var(--black);
 }
-button.outline:hover {
+.button.outline:hover {
   background-color: white;
 }
-button.transparent {
+.button.white {
+  background-color: transparent;
+  border-width: 1px;
+  border-color: white;
+  border-style: solid;
+  color: white;
+}
+.button.white:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.button.transparent {
   background-color: transparent;
   color: var(--black);
   font-size: larger;
@@ -128,16 +150,100 @@ button.transparent {
   min-width: 0;
   max-height: none;
 }
-button.small {
+.button.small {
   max-height: 45px;
   padding: 6px 10px;
   font-size: var(--font-medium);
 }
 
-.brand {
-  color: var(--black);
-  margin-bottom: var(--margin-large);
+.titlebar {
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--black);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: var(--margin-large);
+  z-index: 100;
 }
-.brand > i {
+.titlebar > h1 {
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+}
+.titlebar > .icon {
+  height: 60px;
+  width: 60px;
+  padding: 0;
+}
+
+.content {
+  margin-top: 70px;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  gap: var(--margin-large);
+}
+
+.hook-card {
+  min-width: 800px;
+  background-color: var(--darkWhite);
+  padding: var(--margin-small);
+  margin: 5px auto;
+  border-radius: var(--border-medium);
+  border-color: var(--lightGray);
+  border-width: 1px;
+  border-style: solid;
+}
+.hook-card .delete {
+  justify-content: end;
   margin-bottom: var(--margin-small);
+}
+.hook-card .delete button {
+  margin-left: auto;
+  margin-right: 0;
+  background-color: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+}
+.hook-card .delete button i {
+  font-size: 16px;
+}
+.hook-card .url {
+  background-color: white;
+  padding: var(--margin-small);
+  border-radius: var(--border-medium);
+  border-color: var(--lightGray);
+  border-width: 1px;
+  border-style: solid;
+}
+.hook-card input {
+  font-size: var(--font-medium);
+  font: var(--font) !important;
+}
+.hook-card .title {
+  font-weight: 700 !important;
+  font-size: var(--font-large) !important;
+}
+.hook-card textarea {
+  background-color: var(--black);
+  color: white;
+  border: none;
+  padding: var(--margin-small);
+  height: 194px;
+  border-radius: var(--border-small);
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  resize: none;
+}
+.hook-card textarea:focus {
+  outline: none;
+}
+
+.add-new {
+  margin-bottom: 10%;
 }
