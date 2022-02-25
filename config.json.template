@@ -1,0 +1,10 @@
+{
+    "LOG_PATH": "./logs/",
+    "AUTO_IP": true,
+    "IP": "192.168.1.1",
+    "PORT": 1717,
+    "USERNAME": "admin",
+    "PASSWORD": "123",
+    "SESSION_SECRET": "My secure secret",
+    "BASE_URL": "mydomanename.com:1717"
+}

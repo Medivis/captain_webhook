@@ -1,0 +1,14 @@
+[Unit]
+Description=Captain Webhook Server
+After=Network
+
+[Service]
+ExecStart=/path-to-your-captain-webhook-repo/start.sh
+WorkingDirectory=/path-to-your-captain-webhook-repo
+User=root
+Group=root
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
