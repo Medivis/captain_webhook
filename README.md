@@ -65,7 +65,7 @@ Host github-wiki
 
 To ensure access to the repo, the public key must be entered as a deploy key in the Github settings. 
 
-### 3. Clone mit Deploy Key
+### 3. Clone with Deploy Key
 
 So that the ssh key is used permanently, clone the repo via ssh with our custom host. 
 
